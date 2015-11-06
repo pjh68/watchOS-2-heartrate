@@ -110,9 +110,13 @@
 
 
 -(GCDAsyncSocket*)getSelectedSocket{
-    NSNetService* coService =[self.arrDevices objectAtIndex:0];
-    return  [self.dictSockets objectForKey:coService.name];
-    
+    if ([self.arrDevices count]>0) {
+        NSNetService* coService =[self.arrDevices objectAtIndex:0];
+        return  [self.dictSockets objectForKey:coService.name];
+    } else {
+        return nil;
+    }
+
 }
 
 -(void) socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
