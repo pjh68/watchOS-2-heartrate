@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.vimofit.VimoHeartRate</string>
+	<string>com.deloittedigital.goathland</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

@@ -241,7 +241,7 @@
 				TargetAttributes = {
 					AA192F6C1B3C8F3F00A2FB8C = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 96XG5CYU7R;
+						DevelopmentTeam = 8HTSCWWX39;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -250,10 +250,11 @@
 					};
 					AA192F831B3C8FF100A2FB8C = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 8HTSCWWX39;
 					};
 					AA192F8F1B3C8FF100A2FB8C = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 96XG5CYU7R;
+						DevelopmentTeam = 8HTSCWWX39;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -464,9 +465,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = VimoHeartRate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimofit.VimoHeartRate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deloittedigital.goathland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7d39eb77-c8e3-482b-96af-4e2e61bae68c";
 			};
 			name = Debug;
 		};
@@ -479,9 +480,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = VimoHeartRate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimofit.VimoHeartRate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deloittedigital.goathland;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7d39eb77-c8e3-482b-96af-4e2e61bae68c";
 			};
 			name = Release;
 		};
@@ -493,7 +494,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "VimoHeartRate WatchKit App Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimofit.VimoHeartRate.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deloittedigital.goathland.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -511,7 +512,7 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "VimoHeartRate WatchKit App Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimofit.VimoHeartRate.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deloittedigital.goathland.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -525,12 +526,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = VimoHeartRate_WatchKit_App_Extension;
 				INFOPLIST_FILE = "VimoHeartRate WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimofit.VimoHeartRate.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deloittedigital.goathland.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -542,12 +545,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = VimoHeartRate_WatchKit_App_Extension;
 				INFOPLIST_FILE = "VimoHeartRate WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimofit.VimoHeartRate.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deloittedigital.goathland.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
