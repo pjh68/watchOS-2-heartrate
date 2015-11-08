@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WCSessionDelegate {
 
+    @IBOutlet var hblabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,5 +28,15 @@ class ViewController: UIViewController {
     }
 
 
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        NSLog("WC Message recieved: \(message)")
+        let hbMaybeValue = message["heartbeat"]
+        if let hbValue = hbMaybeValue as? Double {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.hblabel.text = String(format:"%.0f", hbValue)
+            }
+        }
+    }
+    
 }
 

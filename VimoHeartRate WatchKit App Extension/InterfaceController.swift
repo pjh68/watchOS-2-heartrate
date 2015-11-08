@@ -9,9 +9,9 @@
 import Foundation
 import HealthKit
 import WatchKit
+import WatchConnectivity
 
-
-class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
+class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate, WCSessionDelegate {
     
     @IBOutlet private weak var label: WKInterfaceLabel!
     @IBOutlet private weak var deviceLabel : WKInterfaceLabel!
@@ -25,10 +25,16 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     var anchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
     
     
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         workoutSession.delegate = self
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
     }
+    
+    
     
     override func willActivate() {
         super.willActivate()
@@ -117,10 +123,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     func updateHeartRate(samples: [HKSample]?) {
         guard let heartRateSamples = samples as? [HKQuantitySample] else {return}
+        guard let sample = heartRateSamples.first else{return}
+        let value = sample.quantity.doubleValueForUnit(self.heartRateUnit)
         
         dispatch_async(dispatch_get_main_queue()) {
-            guard let sample = heartRateSamples.first else{return}
-            let value = sample.quantity.doubleValueForUnit(self.heartRateUnit)
+            
             self.label.setText(String(UInt16(value)))
             
             // retrieve source from sample
@@ -128,6 +135,20 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             self.updateDeviceName(name)
             self.animateHeart()
         }
+        
+        //Comms back to main app
+        if (WCSession.defaultSession().reachable) {
+            let applicationDict = ["heartbeat" : value] // Create a dict of application data
+           
+            WCSession.defaultSession().sendMessage(applicationDict, replyHandler: { (reply: [String : AnyObject]) -> Void in
+                NSLog("Reply from watch comms: \(reply)")
+                },
+            errorHandler: { (error: NSError) -> Void in
+                    NSLog("Error from watch comms:  \(error)")
+            })
+            
+        }
+        
     }
     
     func updateDeviceName(deviceName: String) {
