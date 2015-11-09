@@ -22,7 +22,7 @@
 @property(nonatomic,strong) NSNetService * service;
 @property(nonatomic,strong) GCDAsyncSocket* socket;
 @property(strong) NSMutableArray* arrDevices;
-@property(nonatomic, assign) BOOL isConnected;
+
 
 @end
 
@@ -33,6 +33,7 @@
     self = [super init];
     if (self) {
         self.isConnected = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateTVConnectionStatus" object:nil];
         self.dictSockets=[NSMutableDictionary dictionary];
         [self startService];
     }
@@ -69,7 +70,7 @@
 
 -(BOOL)connectWithServer:(NSNetService*)service{
     BOOL isConnected = NO;
-    
+
     NSArray* arrAddress =[[service addresses] mutableCopy];
     GCDAsyncSocket * coSocket= [self.dictSockets objectForKey:service.name];
     
@@ -91,7 +92,9 @@
         isConnected = [coSocket isConnected];
     }
     
-    
+    self.isConnected = isConnected;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateTVConnectionStatus" object:nil];
+
     return isConnected;
 }
 

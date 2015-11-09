@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface RemoteSender : NSObject
-
+@property(nonatomic, assign) BOOL isConnected;
 -(void)sendInfo:(NSDictionary *)infoDict;
 
 @end
