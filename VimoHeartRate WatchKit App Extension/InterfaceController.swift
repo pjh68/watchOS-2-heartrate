@@ -32,6 +32,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate, WCSe
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+
         let session = WCSession.defaultSession()
         session.delegate = self
         session.activateSession()

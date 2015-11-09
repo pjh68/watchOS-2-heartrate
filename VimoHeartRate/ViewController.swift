@@ -34,21 +34,13 @@ class ViewController: UIViewController, WCSessionDelegate {
 
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         NSLog("WC Message recieved: \(message)")
-        //Send message on to TV
-        self.remoteSender?.sendInfo(message)
-        
         let hbMaybeValue = message["heartbeat"]
         if let hbValue = hbMaybeValue as? Double {
             dispatch_async(dispatch_get_main_queue()) {
-                //Update label
                 self.hblabel.text = String(format:"%.0f", hbValue)
             }
         }
     }
     
-    @IBAction func sendTestHB(sender: AnyObject) {
-        let message = ["heartbeat" : 100.0]
-        self.remoteSender?.sendInfo(message)
-    }
 }
 
